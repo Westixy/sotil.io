@@ -24,8 +24,8 @@ jobs:
       - name: 📂 push files
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
-          server: 1k4r5.ftp.infomaniak.com
+          server: sotil.io
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          local-dir: ./public
+          local-dir: ./public/
           server-dir: /
