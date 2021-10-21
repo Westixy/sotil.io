@@ -1,0 +1,31 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '17'
+
+      - name: install and build
+        run: |
+          npm ci 
+          npm run build
+
+      - name: 📂 push files
+        uses: SamKirkland/FTP-Deploy-Action@4.1.0
+        with:
+          server: 1k4r5.ftp.infomaniak.com
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          local-dir: ./public
+          server-dir: /
