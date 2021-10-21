@@ -1,2 +1,3 @@
-# sotil.io-front
-website for sotil.io
+# sotil.io
+
+Static page for [sotil.io](https://sotil.io)
